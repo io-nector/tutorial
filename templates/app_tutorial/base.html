@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href=""> -->
+        <!-- <link rel="stylesheet" href="../highlight/styles/vs.css"> -->
+        <link rel="stylesheet" href="../highlight/styles/atom-one-dark.css">
+
+        <script src="../highlight/highlight.js"></script>
+
+        <style>
+            pre {
+                background-color: #a20000;
+                padding: 2px;
+                border-radius: 5px;
+                margin: 0 0 0 -2%;
+            }
+            body {
+                background-color: #333333;
+                color: #e5e5e5;
+                padding: 5% 10% 10% 10%;
+            }
+
+            p {
+                color: #b9b9b9;
+            }
+
+            h1 {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 100px;
+                border: #a20000 solid 2px;
+                text-align: center;
+                color: #e5e5e5;
+                background-color:#1b1b1b;
+            }
+
+            .h1_section {
+                width: 100%;
+                padding: 5px;
+                margin-bottom: 100px;
+                /* border: #a20000 solid 2px; */
+                text-align: center;
+                color: #e5e5e5;
+                background-color:#1b1b1b;
+
+                size: 30px;
+            }
+
+        </style>
+        
+        <script>hljs.highlightAll();</script>
+
+    </head>
+    <body>
+
+<!-- -------------------------------------------------------------------------------- -->
+        <h1>JavaScript</h1>
+
+        <h1 class="h1_section">variables</h1>
+
+        <h2>use strict</h2>
+        <p> //use strict forces javascript to run in a modern mode only
+        </br>//highly recomended to use it</p>
+        <pre><code class="language-javascript">
+            <!-- <script> -->
+                "use strict";
+            <!-- </script> -->
+        </code></pre>
+<!-- -------------------------------------------------------------------------------- -->
+        <br>
+        <br>
+        <h2>assigning variables</h2>
+        <p> //let to declare a variable
+        </br>// multiple variable declaration is allowed with commas
+        </br>//multiple variable declaration can be done on multiple lines
+        </p>
+        <pre><code class="language-javascript">
+            <!-- <script>     -->
+                let message = "Hello World";
+                let user = "John", age = 25, user_message = "Hello";
+                let user2 = "John",
+                    age2 = 25,
+                    message2 = "Hello";
+            <!-- </script> -->
+        </code></pre>
+<!-- -------------------------------------------------------------------------------- -->
+        <br>
+        <br>
+        <h2>assigning variables constant</h2>
+        <p>//const should be all caps and underscores</p>
+        <pre><code class="language-javascript">
+            <!-- <script>     -->
+                const COLOR_RED = '18.04.1982';
+                <!-- </script> -->
+        </code></pre>
+<!-- -------------------------------------------------------------------------------- -->
+        <br>
+        <br>
+        <h2>alert, promp, confirm</h2>
+        <p>//alert is a function that shows a message
+            <br>//no answer will generate null
+            <br>//ie requires a default value or will return "undefined"
+            <br>
+            <br>//confirm will return true or false
+            <br>alert
+            <br> shows a message.
+            <br>prompt
+            <br>&emsp;shows a message asking the user to input text. It returns the text or, if Cancel button or Esc is clicked, null.
+            <br>confirm
+            <br>&emsp;shows a message and waits for the user to press “OK” or “Cancel”. It returns true for OK and false for Cancel/Esc.
+
+            <br>1:&emsp;The exact location of the modal window is determined by the browser. Usually, it’s in the center.
+            <br>2:&emsp;The exact look of the window also depends on the browser. We can’t modify it.
+        </p>
+        <pre><code class="language-javascript">
+            <!-- <script>     -->
+                let answer = prompt('prompt', ['defualt']);
+
+                let answer3 = confirm('prompt');
+                //returns true or false
+            <!-- </script> -->
+        </code></pre>
+<!-- -------------------------------------------------------------------------------- -->
+        <br>
+        <br>
+        <h2>get variable type</h2>
+        <p>//returns variable type</p>
+        <pre><code class="language-javascript">
+            <!-- <script>     -->
+            let value = true;
+            
+            alert(typeof value); // boolean
+            <!-- </script> -->
+        </code></pre>
+
+<!-- -------------------------------------------------------------------------------- -->
+        <br>
+        <br>
+        <h2>Variable conversions</h2>
+        <h3>String conversion</h3>
+        <p>//String(value) converts value to a string</p>
+        <br>
+        <h3>Number conversion</h3>
+        <p>//performing math functions on strings converts the 
+            <br>//string to a number
+            <br>//Number(value) to number
+        </p>
+        <h3>NaN and Undefined</h3>
+        <p>//undefined becomes NaN
+            <br>//null becomes 0
+            <br>//true becomes 1
+            <br>//false becomes 0
+            <br>//empty string becomes false
+            <br>//string with char becomes true
+        <pre><code class="language-javascript">
+            <!-- <script>     -->
+                str = "123";//string
+                num = Number(str);//number
+                num = 123;//number
+                str = String(num);//string
+
+                val = "1" + "2";// 3 number
+
+                alert( Boolean(1) ); // true
+                alert( Boolean(0) ); // false
+
+                alert( Boolean("hello") ); // true
+                alert( Boolean("") ); // false
+                alert( Boolean("0") ); // true
+            <!-- </script> -->
+        </code></pre>
+
+<!-- -------------------------------------------------------------------------------- -->
+        <h1 class="h1_section">math</h1>
+
+        
+    </body>
+</html>
