@@ -38,7 +38,7 @@ if DJANGO_SECRET_KEY == True:
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = [ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev"], '127.0.0.1:8000', 'localhost:8000', ]
+ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev", '127.0.0.1:8000', 'localhost:8000', ]
 
 
 # Application definition
