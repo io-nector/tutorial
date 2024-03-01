@@ -11,8 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from environs import Env
 
+#required packages for environment variables, used to parse database string
+#https://django-environ.readthedocs.io/en/latest/
+from environs import Env
 env = Env()  # new
 env.read_env()
 
@@ -23,8 +25,9 @@ import os
 #https://pypi.org/project/python-dotenv/
 load_dotenv()
 
-DJANGO_SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-APP_NAME = os.getenv("FLY_APP_NAME")
+DJANGO_DEBUG = os.environ['DJANGO_DEBUG']
+DJANGO_SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+# APP_NAME = os.environ["FLY_APP_NAME"]
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -35,18 +38,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'DJANGO_SECRET_KEY'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if DJANGO_SECRET_KEY == True:
+if DJANGO_DEBUG == True:
     DEBUG = True
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev", '127.0.0.1:8000', 'localhost:8000', ]
+# DEBUG = True
 
-CSRF_TRUSTED_ORIGINS = [f"https://{APP_NAME}.fly.dev/"]
+ALLOWED_HOSTS = ["tutorial-postgres.fly.dev", '127.0.0.1', 'localhost:8000', ]
 
+# CSRF_TRUSTED_ORIGINS = ['https://tutorial-site.fly.dev']
+
+CSRF_TRUSTED_ORIGINS = ["https://tutorial-postgres.fly.dev"]  
 
 
 # Application definition
@@ -97,17 +103,10 @@ WSGI_APPLICATION = 'prj_tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# django_project/settings.py
 DATABASES = {
     "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+print(DATABASES)
 
 
 # Password validation
