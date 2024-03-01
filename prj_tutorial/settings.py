@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env
+
+env = Env()  # new
+env.read_env()
+
 from dotenv import load_dotenv
 import os
 
@@ -19,7 +24,7 @@ import os
 load_dotenv()
 
 DJANGO_SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-APP_NAME = os.environ.get("FLY_APP_NAME")
+APP_NAME = os.getenv("FLY_APP_NAME")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +45,9 @@ else:
 
 ALLOWED_HOSTS = [f"{APP_NAME}.fly.dev", '127.0.0.1:8000', 'localhost:8000', ]
 
+CSRF_TRUSTED_ORIGINS = [f"https://{APP_NAME}.fly.dev/"]
+
+
 
 # Application definition
 
@@ -49,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'app_tutorial'
 ]
@@ -56,6 +65,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -87,12 +97,17 @@ WSGI_APPLICATION = 'prj_tutorial.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# django_project/settings.py
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -132,6 +147,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
