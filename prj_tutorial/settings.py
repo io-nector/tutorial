@@ -29,6 +29,7 @@ DJANGO_DEBUG = os.environ['DJANGO_DEBUG']
 DJANGO_SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 # APP_NAME = os.environ["FLY_APP_NAME"]
 
+print(f'debug is set to: {DJANGO_DEBUG}')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,14 +42,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if DJANGO_DEBUG == True:
-    DEBUG = True
-else:
-    DEBUG = False
+# if DJANGO_DEBUG == True:
+#     DEBUG = True
+# else:
+#     DEBUG = False
 
-# DEBUG = True
+DEBUG = True
 
-ALLOWED_HOSTS = ["tutorial-postgres.fly.dev", '127.0.0.1', 'localhost:8000', ]
+ALLOWED_HOSTS = ["tutorial-postgres.fly.dev", '127.0.0.1', 'localhost', ]
 
 # CSRF_TRUSTED_ORIGINS = ['https://tutorial-site.fly.dev']
 
@@ -106,7 +107,6 @@ WSGI_APPLICATION = 'prj_tutorial.wsgi.application'
 DATABASES = {
     "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
-print(DATABASES)
 
 
 # Password validation

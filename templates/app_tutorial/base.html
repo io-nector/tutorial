@@ -15,53 +15,32 @@
         <link rel="stylesheet" href="{% static 'app_tutorial/highlight/styles/atom-one-dark.css'%}">
 
         <script src="{% static 'app_tutorial/highlight/highlight.js' %}"></script>
-
-        <style>
-            pre {
-                background-color: #a20000;
-                padding: 2px;
-                border-radius: 5px;
-                margin: 0 0 0 -2%;
-            }
-            body {
-                background-color: #333333;
-                color: #e5e5e5;
-                padding: 5% 10% 10% 10%;
-            }
-
-            p {
-                color: #b9b9b9;
-            }
-
-            h1 {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 100px;
-                border: #a20000 solid 2px;
-                text-align: center;
-                color: #e5e5e5;
-                background-color:#1b1b1b;
-            }
-
-            .h1_section {
-                width: 100%;
-                padding: 5px;
-                margin-bottom: 100px;
-                /* border: #a20000 solid 2px; */
-                text-align: center;
-                color: #e5e5e5;
-                background-color:#1b1b1b;
-
-                size: 30px;
-            }
-
-        </style>
         
+
+        <link rel="stylesheet" href="{% static 'app_tutorial/css/base.css' %}">
+
         <script>hljs.highlightAll();</script>
 
     </head>
     <body>
+        <header>
+            <nav>
+                {% for item in subjects_db %}
+                <a href="{% url 'subject_view' item.subject %}">{{ item.subject }}</a>
+                {% endfor %}
+                <a href="{% url 'subject_view' 'all' %}">All Items</a>
+            </nav>
+        </header>
 
+        <div class="main_content">
+        {% block content %}
+        {% endblock %}
+        </div>
+
+
+
+        
+{% comment %} 
 <!-- -------------------------------------------------------------------------------- -->
         <h1>JavaScript</h1>
 
@@ -182,6 +161,6 @@
 <!-- -------------------------------------------------------------------------------- -->
         <h1 class="h1_section">math</h1>
 
-        
+         {% endcomment %}
     </body>
 </html>

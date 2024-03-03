@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for item in entries_db %}
+    <h1>{{item.section}}</h1>
+    <p>{{item.topic}}</p>
+    <p>{{item.info}}</p>
+    <pre><code class="language-{{subjects_db.subject}}">
+        {{ item.code }}
+    </code></pre>
+    
+{% endfor %}
+
+
+<h1>Topic</h1>
+<form action"" method="post" novalidate>
+    {% csrf_token %}
+
+    {{ add_topic_form.as_p }}
+
+    <button type="submit" value="submit" name='add_topic'>Save</button>
+</form>
+
+<hr>
+<br>
+<h1>Entry</h1>
+<form action"" method="post" novalidate>
+    {% csrf_token %}
+
+    {{ add_entry_form.as_p }}
+
+    <button type="submit" value="submit" name='add_entry'>Save</button>
+</form>
+<hr>
+<br>
+<h1>Section</h1>
+<form action"" method="post" novalidate>
+    {% csrf_token %}
+
+    {{ add_subject_form.as_p }}
+
+    <button type="submit" value="submit" name='add_section'>Save</button>
+</form>
+
+
+{% endblock %}

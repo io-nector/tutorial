@@ -1,0 +1,108 @@
+@import 'variables';
+
+
+
+body {
+    width: 100vw;
+    height: 100%;
+
+    position: relative;
+    background-color: $color_dark;
+
+
+    @media screen and (min-width: 900px){
+        
+        header {
+            width: 20%;
+            height: 100%;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            background-color: $color_dark;
+            color: $color_light;
+        
+            border: $color_accent solid 2px;
+            
+            nav {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                padding: 10px;
+                margin: 0 0 0 0;
+                border: $color_accent solid 2px;
+                background-color: $color_dark;
+                color: $color_light;
+
+                a {
+                    text-decoration: none;
+                    color: $color_light;
+                    font-size: 20px;
+                    padding: 10px;
+                    margin: 0 0 0 0;
+                    border: $color_accent solid 2px;
+                    background-color: $color_dark;
+                    color: $color_light;
+                }
+            }
+        }
+
+        .main_content{
+            width:80%;
+            height: 100%;
+            border: solid 2px $color_accent;
+            overflow-y: scroll;
+            margin: 0 0 0 20%;
+
+            display: flex;
+            flex-direction: column;
+
+            h1 {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 100px;
+                border: $color_accent solid 2px;
+                text-align: center;
+                color: $color_light;
+                background-color:$color_dark;
+            }
+
+            // .h1_section {
+            //     width: 100%;
+            //     padding: 5px;
+            //     margin-bottom: 100px;
+            //     /* border: #a20000 solid 2px; */
+            //     text-align: center;
+            //     color: #e5e5e5;
+            //     background-color:#1b1b1b;
+            
+            //     size: 30px;
+            // }
+
+            // p {
+            //     color: $color_medium;
+            // }
+
+            // pre {
+            //     background-color: #a20000;
+            //     padding: 2px;
+            //     border-radius: 5px;
+            //     margin: 0 0 0 -2%;
+            // }
+
+            form {
+                width: 100%;
+                padding: 10px;
+                margin: 0 0 0 0%;
+                border: $color_accent solid 2px;
+                background-color: $color_dark;
+                color: $color_light;
+            }
+        }
+    }
+
+}

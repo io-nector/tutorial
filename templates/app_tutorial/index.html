@@ -1,2 +1,12 @@
 {% extends "base.html" %}
 
+{% block content%}
+    <form action"" method="post" novalidate>
+        {% csrf_token %}
+
+        {{ add_subject.as_p }}
+
+        <button type="submit" value="submit" name="add_subject">Save</button>
+
+    </form>
+{% endblock %}
